@@ -17,14 +17,7 @@ rankhospital <- function(State=as.character(),Outcome=as.character(), num){
         #     Checking provided num var is correct
         if(!is.numeric(num) & num!="Best" & num!="Worst"){
                 stop("invalid ranking entry. Allowed options are either
-                     integer or 'Best'or 'Worst'")
-                }
-
-        if(num > length(data[,1])){
-                print(data[,"Rank"][1])
-                stop("Rank greater than length of data")
-
-        }
+                     integer or 'Best'or 'Worst'")}
         # Setting Mortality Columns as numeric values
         data[,Out.Choice] <- lapply(FUN=as.numeric,data[,Out.Choice])
         #Providing character names to compate against
@@ -42,18 +35,23 @@ rankhospital <- function(State=as.character(),Outcome=as.character(), num){
                 data$Rank <- 1:length(data[,1])
 
 
-
+        if(num > length(data[,1])&num!="Best"&num!="Worst"){
+                data[1,6] <- NA
+                print(data[1,6])
+                stop("Rank greater than length of data")
+                }
 
 
         ## Return hospital name in that state with the given rank
         if(num=="Best"){
                 data <- data[1,c(1,Out.Choice[[Outcome]],6)]}
 
-        if(num=="Worst"){
+
+                        if(num=="Worst"){
                 data <- data[data$Rank==length(data$Rank),c(1,Out.Choice[[Outcome]],6)]}
         if(is.numeric(num)){
 
-                       data <-  data[data$Rank[1:num],c(1,Out.Choice[[Outcome]],6)]}
+               data <-  data[data$Rank[1:num],c(1,Out.Choice[[Outcome]],6)]}
 
   print(data)
 }

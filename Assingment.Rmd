@@ -25,4 +25,18 @@ best("BB", "heart attack")
 best("NY", "hert attack")
 ```
 ##3 Ranking Hospital within State
+```{r}
+source("rankhospital.R")
+rankhospital("TX", "heart attack" , 4)
+rankhospital("TX", "heart attack" , 5000)
+rankhospital("TX", "heart attack" , "Best")
+rankhospital("TX", "heart attack" , "Worst")
+rankhospital("AL", "heart attack" , "Worst")
+rankhospital("AL", "heart failure" , "Worst")
+rankhospital("NY", "heart failure" , "Worst")
+rankhospital("MA", "heart failure" , "Worst")
+rankhospital("AK", "heart failure" , "Best")
+rankhospital("AK", "heart failure" , 5)
+
+```
 
