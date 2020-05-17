@@ -1,8 +1,6 @@
 ---
-title: "Prog Assignment"
-author: "Mumin Mohamed"
-date: "13 May 2020"
-output: html_document
+title: "R Notebook"
+output: html_notebook
 ---
 
 
@@ -37,6 +35,16 @@ rankhospital("NY", "heart failure" , "Worst")
 rankhospital("MA", "heart failure" , "Worst")
 rankhospital("AK", "heart failure" , "Best")
 rankhospital("AK", "heart failure" , 5)
+
+```
+
+
+## Ranking pert state listed
+```{r}
+source("rankall.R")
+head(rankall("pneumonia", "Worst"))
+head(rankall("heart attack", 20), 10)
+
 
 ```
 
