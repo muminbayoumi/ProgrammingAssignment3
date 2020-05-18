@@ -21,9 +21,10 @@ best("MD", "heart attack")
 best("MD", "pneumonia")
 best("BB", "heart attack")
 best("NY", "hert attack")
+
 ```
 ##3 Ranking Hospital within State
-```{r}
+```{r error=TRUE}
 source("rankhospital.R")
 rankhospital("TX", "heart attack" , 4)
 rankhospital("TX", "heart attack" , 5000)
@@ -43,6 +44,7 @@ rankhospital("AK", "heart failure" , 5)
 ```{r}
 source("rankall.R")
 head(rankall("pneumonia", "Worst"))
+head(rankall("pneumonia", 3000))
 head(rankall("heart attack", 20), 10)
 
 

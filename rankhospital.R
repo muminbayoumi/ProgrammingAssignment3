@@ -1,6 +1,6 @@
 rankhospital <- function(State=as.character(),Outcome=as.character(), num){
         ## Read outcome data
-        data <- read.csv(file = "outcome-of-care-measures.csv")
+        data <- read.csv(file = "outcome-of-care-measures.csv",na.strings = "Not Available")
         data <- data[,c(2,7,11,17,23)]
         # Initializing Rank Column
         data$Rank <- NA
@@ -47,11 +47,12 @@ rankhospital <- function(State=as.character(),Outcome=as.character(), num){
                 data <- data[1,c(1,Out.Choice[[Outcome]],6)]}
 
 
-                        if(num=="Worst"){
+         if(num=="Worst"){
+                data <- data[!is.na(data[,Out.Choice[Outcome]]),]
                 data <- data[data$Rank==length(data$Rank),c(1,Out.Choice[[Outcome]],6)]}
         if(is.numeric(num)){
+                data <- data[!is.na(data[,Out.Choice[Outcome]]),]
+                data <- data[data$Rank[num],c(1,Out.Choice[[Outcome]],6)]}
 
-               data <-  data[data$Rank[1:num],c(1,Out.Choice[[Outcome]],6)]}
-
-  print(data)
+return(data)
 }
